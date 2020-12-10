@@ -6,7 +6,7 @@ time=$(date)
 export PATH=/usr/bin:$PATH
 
 /usr/bin/yum install -y gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel \
-    openssl-devel tk-devel libffi-devel xz-devel git tar bzip2
+    openssl-devel tk-devel libffi-devel xz-devel git tar bzip2 make
 /usr/bin/git clone https://github.com/pyenv/pyenv.git ~/pyenv
 /usr/bin/mkdir /mnt/python/
 
