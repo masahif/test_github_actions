@@ -3,15 +3,17 @@
 echo "Hello $1"
 time=$(date)
 
-yum git install -y gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel \
-    openssl-devel tk-devel libffi-devel xz-devel git
-git clone https://github.com/pyenv/pyenv.git ~/pyenv
-pushd ~/pyenv/plugins/python-build
+export PATH=/usr/bin:$PATH
 
-mkdir /mnt/python/
+/usr/bin/yum git install -y gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel \
+    openssl-devel tk-devel libffi-devel xz-devel git
+/usr/bin/git clone https://github.com/pyenv/pyenv.git ~/pyenv
+/usr/bin/mkdir /mnt/python/
+
+pushd ~/pyenv/plugins/python-build
 ./install.sh
 /usr/local/bin/python-build 3.7.9 /mnt/python
 ARCHIVE_NAME='python-3.7.9-amzn2.tar.bz'
-tar cvfj /tmp/$ARCHIVE_NAME -C / /mnt/python
+/usr/bin/tar cvfj /tmp/$ARCHIVE_NAME -C / /mnt/python
 
 echo "::set-output name=time::$time"
